@@ -1,0 +1,16 @@
+Kinash\EventsBundle\Document\EventNode:
+    event{1..2}:
+        title (unique): <sentence(2)>
+        description: <text(750)>
+        parentDocument: <eventsParent()>
+Kinash\EventsBundle\Document\WorkshopNode:
+    workshop{1..30}:
+        title (unique): <sentence(3)>
+        description: <text(500)>
+        parentDocument: @event*
+Kinash\EventsBundle\Document\TimeslotNode:
+    timeslot{1..90}:
+        time: <time()>
+        room: <state()>
+        totalPlaces: <numberBetween(15, 200)>
+        parentDocument: @workshop*
