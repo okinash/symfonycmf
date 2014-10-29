@@ -87,7 +87,9 @@ cmf_core:
 cmf_routing:
     dynamic:
         templates_by_class:
-            Symfony\Cmf\Bundle\SimpleCmsBundle\Doctrine\Phpcr\Page: AcmeDemoBundle:Page:index.html.twig
+            #Symfony\Cmf\Bundle\SimpleCmsBundle\Doctrine\Phpcr\Page: AcmeDemoBundle:Page:index.html.twig
+            Kinash\EventsBundle\Document\EventPage: EventsBundle:Document:EventPage.html.twig
+            Kinash\EventsBundle\Document\WorkShopPage: EventsBundle:Document:WorkShopPage.html.twig
 
 # Menu Configuration
 knp_menu:

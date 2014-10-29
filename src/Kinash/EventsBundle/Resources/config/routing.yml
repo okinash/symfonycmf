@@ -1,3 +1,14 @@
 events_homepage:
     path:     /hello/{name}
     defaults: { _controller: EventsBundle:Default:index }
+
+
+_events_security:
+    resource: "@EventsBundle/Controller/SecurityController.php"
+    type: annotation
+
+_events_login_check:
+    path: /login_check
+
+_events_logout:
+    path: /logout

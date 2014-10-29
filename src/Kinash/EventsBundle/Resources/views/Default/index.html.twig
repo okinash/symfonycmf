@@ -1,1 +1,5 @@
-Hello {{ name }}!
+{% block main %}
+    {% createphp cmfMainContent as="rdf" %}
+    {{ rdf|raw }}
+    {% endcreatephp %}
+{% endblock %}

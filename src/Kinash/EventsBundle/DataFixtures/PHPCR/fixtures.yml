@@ -1,16 +1,25 @@
-Kinash\EventsBundle\Document\EventNode:
+Kinash\EventsBundle\Document\EventPage:
     event{1..2}:
-        title (unique): <sentence(2)>
-        description: <text(750)>
+        title (unique): <text(30)>
+        label: @self->title
+        name: <urlGenerate(@self->title)>
+        body: <text(750)>
         parentDocument: <eventsParent()>
-Kinash\EventsBundle\Document\WorkshopNode:
-    workshop{1..30}:
-        title (unique): <sentence(3)>
-        description: <text(500)>
+Kinash\EventsBundle\Document\WorkShopPage:
+    workshop{1..25}:
+        title (unique): <text(30)>
+        label: @self->title
+        name: <urlGenerate(@self->title)>
+        body: <text(750)>
         parentDocument: @event*
-Kinash\EventsBundle\Document\TimeslotNode:
-    timeslot{1..90}:
-        time: <time()>
-        room: <state()>
-        totalPlaces: <numberBetween(15, 200)>
+Kinash\EventsBundle\Document\TimeSlot:
+    timeslot{1..75}:
+        title (unique): <city()>
+        label: @self->title
+        startTime: <numberBetween(7,21)>:00
+        endTime: <endTimeGenerate(@self->startTime)>
+        name: <urlGenerate(@self->title . "_" .@self->startTime . "_" . @self->endTime)>
+        body: <text(750)>
         parentDocument: @workshop*
+        room: @self->title
+        totalPlaces: <randomElement(array(20,25,30))>
