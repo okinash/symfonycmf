@@ -1,0 +1,12 @@
+<type
+        xmlns:schema="http://schema.org/"
+        typeof="schema:WebPage"
+        >
+    <children>
+        <property property="schema:text" identifier="title" tag="h4"/>
+        <property property="schema:text" identifier="name" />
+        <property property="schema:text" identifier="totalPlaces" />
+        <property property="schema:text" identifier="startTime" />
+        <property property="schema:text" identifier="endTime" />
+    </children>
+</type>

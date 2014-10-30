@@ -11,12 +11,15 @@
 {% endcreatephp %}
     <div class="row">
             {% for child in cmfMainContent.getChildren %}
-                <div class="col-md-4 panel">
-                    <h4>Room :{{ child.title }}</h4>
-                    <b>Begins at:</b> {{ child.startTime }}<br>
-                    <b>Ends at:</b> {{ child.endTime }}<br>
-                    <b>Total Places:</b> {{ child.totalPlaces }}<br>
+                {% createphp child as="rdf" %}
+                <div {{ createphp_attributes(rdf) }}>
+                    <div class="col-md-4 panel">
+                    <h4 {{ createphp_attributes( rdf.title ) }}>{{ createphp_content( rdf.title ) }}</h4>
+                    <b>Begins at:</b><div {{ createphp_attributes( rdf.startTime ) }}>{{ createphp_content( rdf.startTime ) }}</div><br>
+                    <b>Ends at:</b> <div {{ createphp_attributes( rdf.endTime ) }}>{{ createphp_content( rdf.endTime ) }}</div><br>
+                    <b>Total places:</b> <div {{ createphp_attributes( rdf.totalPlaces ) }}>{{ createphp_content( rdf.totalPlaces ) }}</div><br>
                 </div>
+                {% endcreatephp %}
             {% endfor %}
     </div>
 {% endblock %}
