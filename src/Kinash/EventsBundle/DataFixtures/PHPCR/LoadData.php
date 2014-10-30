@@ -22,12 +22,12 @@ class LoadData implements FixtureInterface
         // add menu item for home
 
         $menuRoot = $dm->find(null, '/cms/simple');
-        $homeMenuNode = new MenuNode('events');
+       /* $homeMenuNode = new MenuNode('events');
         $homeMenuNode->setLabel('Events');
         $homeMenuNode->setParent($menuRoot);
         //$homeMenuNode->setContent(null);
 
-        $dm->persist($homeMenuNode);
+        $dm->persist($homeMenuNode);*/
 
         $this->dm = $dm;
         Fixtures::load(__DIR__.'/fixtures.yml', $dm, array('providers' => array($this)));
@@ -39,11 +39,20 @@ class LoadData implements FixtureInterface
         $loginMenuNode->setRoute('login');
 
         $dm->persist($loginMenuNode);
+
+
+
+        $logout = new MenuNode('logout');
+        $logout->setLabel('Logout');
+        $logout->setParent($menuRoot);
+        $logout->setRoute('logout');
+
+        $dm->persist($logout);
     }
 
     public function eventsParent()
     {
-        return $this->dm->find(null, '/cms/simple/events');
+        return $this->dm->find(null, '/cms/simple');
     }
 
     public function urlGenerate($text)

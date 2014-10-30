@@ -1,10 +1,17 @@
+Kinash\EventsBundle\Document\HomePage:
+    homepage1:
+        title: 'Events'
+        label: @self->title
+        name: 'events'
+        body: 'Events Overview'
+        parentDocument: <eventsParent()>
 Kinash\EventsBundle\Document\EventPage:
     event{1..2}:
-        title (unique): <text(30)>
+        title (unique):  <text(30)>
         label: @self->title
         name: <urlGenerate(@self->title)>
         body: <text(750)>
-        parentDocument: <eventsParent()>
+        parentDocument: @homepage1
 Kinash\EventsBundle\Document\WorkShopPage:
     workshop{1..25}:
         title (unique): <text(30)>

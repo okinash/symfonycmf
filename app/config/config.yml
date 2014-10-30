@@ -90,6 +90,7 @@ cmf_routing:
             #Symfony\Cmf\Bundle\SimpleCmsBundle\Doctrine\Phpcr\Page: AcmeDemoBundle:Page:index.html.twig
             Kinash\EventsBundle\Document\EventPage: EventsBundle:Document:EventPage.html.twig
             Kinash\EventsBundle\Document\WorkShopPage: EventsBundle:Document:WorkShopPage.html.twig
+            Kinash\EventsBundle\Document\HomePage: EventsBundle:Document:HomePage.html.twig
 
 # Menu Configuration
 knp_menu:

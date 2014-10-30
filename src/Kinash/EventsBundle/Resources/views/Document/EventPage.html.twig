@@ -1,4 +1,4 @@
-{% extends 'AcmeDemoBundle::layout.html.twig' %}
+{% extends 'EventsBundle::layout.html.twig' %}
 
 {% block main %}
 {% createphp cmfMainContent as="rdf" %}
@@ -7,11 +7,12 @@
         <div {{ createphp_attributes( rdf.body ) }}>{{ createphp_content( rdf.body ) }}</div>
     </div>
 {% endcreatephp %}
-<div><ul>
+<div class="row">
         {% for child in cmfMainContent.getChildren %}
-            <li><a href="/events/{{ cmfMainContent.name }}/{{ child.name }}">{{ child.title }}</li>
+            <div class="col-md-4">
+                <a href="/events/{{ cmfMainContent.name }}/{{ child.name }}">{{ child.title }}</a>
+            </div>
         {% endfor %}
 
-    </ul>
 </div>
 {% endblock %}
