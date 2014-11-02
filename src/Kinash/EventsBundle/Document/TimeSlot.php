@@ -97,7 +97,7 @@ class TimeSlot extends Page
      */
     public function setTotalPlaces($totalPlaces)
     {
-        $this->totalPlaces = $totalPlaces;
+        $this->totalPlaces = (int) strip_tags($totalPlaces);
     }
 
     /**

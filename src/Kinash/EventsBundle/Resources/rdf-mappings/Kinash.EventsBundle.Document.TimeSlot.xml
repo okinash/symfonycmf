@@ -3,10 +3,9 @@
         typeof="schema:WebPage"
         >
     <children>
-        <property property="schema:text" identifier="title" tag="h4"/>
-        <property property="schema:text" identifier="name" />
-        <property property="schema:text" identifier="totalPlaces" />
-        <property property="schema:text" identifier="startTime" />
-        <property property="schema:text" identifier="endTime" />
+        <property property="schema:headline" identifier="title" tag="h4"/>
+        <property property="schema:headline2" identifier="totalPlaces" tag="div"/>
+        <property property="schema:time1" identifier="startTime" tag="div" />
+        <property property="schema:time2" identifier="endTime" tag="div"/>
     </children>
 </type>

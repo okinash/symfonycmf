@@ -32,6 +32,7 @@ class LoadData implements FixtureInterface
         $this->dm = $dm;
         Fixtures::load(__DIR__.'/fixtures.yml', $dm, array('providers' => array($this)));
 
+        /*
         // add menu item for login
         $loginMenuNode = new MenuNode('login');
         $loginMenuNode->setLabel('Admin Login');
@@ -48,6 +49,67 @@ class LoadData implements FixtureInterface
         $logout->setRoute('logout');
 
         $dm->persist($logout);
+
+*/
+
+
+        // tweak homepage
+       /* $page = $this->dm->find(null, '/cms/simple/events');
+        $page->setBody('Hello');
+        $page->setDefault('_template', 'EventsBundle::home.html.twig');
+*/
+        $page = $this->dm->find(null, '/cms/simple');
+        $page->setBody('Hello');
+        $page->setDefault('_template', 'EventsBundle::home.html.twig');
+
+
+        // add menu item for home
+        $menuRoot =   $this->dm->find(null, '/cms/simple');
+        $homeMenuNode = new MenuNode('home');
+        $homeMenuNode->setLabel('Home');
+        $homeMenuNode->setParent($menuRoot);
+        $homeMenuNode->setContent($page);
+
+        $this->dm->persist($homeMenuNode);
+
+        /*  $homeMenuNode = new MenuNode('events');
+          $homeMenuNode->setLabel('Events');
+          $homeMenuNode->setParent($menuRoot);
+          $homeMenuNode->setContent($page);
+         // $homeMenuNode->setRoute('/');*/
+
+        //$manager->persist($homeMenuNode);
+
+        // load the pages
+        // Fixtures::load(array(__DIR__.'/../../Resources/data/pages.yml'), $manager);
+
+        // add menu item for login
+        $loginMenuNode = new MenuNode('login');
+        $loginMenuNode->setLabel('Admin Login');
+        $loginMenuNode->setParent($menuRoot);
+        $loginMenuNode->setRoute('_events_login');
+
+        $this->dm->persist($loginMenuNode);
+
+
+        $logoutMenuNode = new MenuNode('logout');
+        $logoutMenuNode->setLabel('Logout');
+        $logoutMenuNode->setParent($menuRoot);
+        $logoutMenuNode->setRoute('_events_logout');
+
+        $this->dm->persist($logoutMenuNode);
+
+
+
+        // load the blocks
+        //    NodeHelper::createPath($manager->getPhpcrSession(), '/cms/content/blocks');
+        //    Fixtures::load(array(__DIR__.'/../../Resources/data/blocks.yml'), $manager);
+
+        // save the changes
+        $this->dm->flush();
+
+
+
     }
 
     public function eventsParent()

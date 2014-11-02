@@ -2,24 +2,27 @@
 
 {% block main %}
 <p><a href="/events/{{ cmfMainContent.getParent.name }}">{{ cmfMainContent.getParent.title }}</a></p>
-{% createphp cmfMainContent as="rdf" %}
+{% createphp cmfMainContent as="rdf" noautotag %}
     <div {{ createphp_attributes(rdf) }}>
         <h1 {{ createphp_attributes( rdf.title ) }}>{{ createphp_content( rdf.title ) }}</h1>
         <div {{ createphp_attributes( rdf.body ) }}>{{ createphp_content( rdf.body ) }}</div>
 
     </div>
 {% endcreatephp %}
-    <div class="row">
-            {% for child in cmfMainContent.getChildren %}
-                {% createphp child as="rdf" %}
+        <div class="row">
+                {% for child in cmfMainContent.getChildren %}
+                    {% createphp child as="rdf" noautotag %}
                 <div {{ createphp_attributes(rdf) }}>
-                    <div class="col-md-4 panel">
+                    <div class="col-md-3 panel">
                     <h4 {{ createphp_attributes( rdf.title ) }}>{{ createphp_content( rdf.title ) }}</h4>
                     <b>Begins at:</b><div {{ createphp_attributes( rdf.startTime ) }}>{{ createphp_content( rdf.startTime ) }}</div><br>
                     <b>Ends at:</b> <div {{ createphp_attributes( rdf.endTime ) }}>{{ createphp_content( rdf.endTime ) }}</div><br>
                     <b>Total places:</b> <div {{ createphp_attributes( rdf.totalPlaces ) }}>{{ createphp_content( rdf.totalPlaces ) }}</div><br>
                 </div>
-                {% endcreatephp %}
-            {% endfor %}
-    </div>
+                    {% endcreatephp %}
+                <div class="col-md-1 panel">
+
+                </div>
+                {% endfor %}
+        </div>
 {% endblock %}

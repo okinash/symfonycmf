@@ -1,15 +1,12 @@
 {% extends 'EventsBundle::layout.html.twig' %}
 
 {% block main %}
-<div><ul>
-        {% for child in cmfMainContent.getChildren %}
-            {% if child.name ==  'events'%}
-                {% for event in child.getChildren %}
-                    <li><a href="/events/{{ event.name }}">{{ event.title }}</li>
-                {% endfor %}
-            {% endif %}
-        {% endfor %}
+    <h1>Events Overview</h1>
+    <div><ul>
+            {% for event in cmfMainContent.getChildren %}
+                <li><a href="/events/{{ event.name }}">{{ event.title }}</li>
+            {% endfor %}
 
-    </ul>
-</div>
+        </ul>
+    </div>
 {% endblock %}
